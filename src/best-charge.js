@@ -11,80 +11,77 @@ function amountId(selectedItems) {
 function matchPromotions(itemsIdCount, allPromoteItems) {
   let itemsPromotionList = [];
   let type;
-  for (let i = 0; i < itemsIdCount.length; i++) {
+  itemsIdCount.map(function (itemsPromotion) {
     allPromoteItems.find(function (item) {
       if (item.items) {
         let existItems = item.items.find(function (id) {
-          return id === itemsIdCount[i].id;
+          return id === itemsPromotion.id;
         });
         if (existItems) {
           type = item.type;
         }
       }
       else {
-        type = "满30减6元";
+        type = '满30减6元';
       }
-
     });
-    itemsPromotionList.push(Object.assign({}, itemsIdCount[i], {type: type}));
-  }
+    itemsPromotionList.push(Object.assign({}, itemsPromotion, {type: type}));
+  });
   return itemsPromotionList;
 }
 
 function matchItems(itemsPromotionList, allItems) {
   let itemsList = [];
-  for (let i = 0; i < itemsPromotionList.length; i++) {
+  itemsPromotionList.map(function (items) {
     let existItems = allItems.find(function (item) {
-      if (item.id === itemsPromotionList[i].id) {
-        return item;
-      }
+      return item.id === items.id;
     });
-    if (existItems) {
-      itemsList.push(Object.assign({}, existItems, {amount: itemsPromotionList[i].amount}, {type: itemsPromotionList[i].type}));
+    if (existItems){
+      itemsList.push(Object.assign({},existItems,{amount:items.amount},{type:items.type}));
     }
-  }
+  });
   return itemsList;
 }
 
 function calculateSubtotal(itemsList) {
   let itemSubtotal = [];
   let subtotal = 0;
-  for (let i = 0; i < itemsList.length; i++) {
-    subtotal = itemsList[i].price * itemsList[i].amount;
-    itemSubtotal.push(Object.assign({}, itemsList[i], {subtotal: subtotal}));
-  }
+  itemsList.map(function (item) {
+    subtotal = item.price * item.amount;
+    itemSubtotal.push(Object.assign({}, item, {subtotal: subtotal}));
+  });
   return itemSubtotal;
 }
 
 function calculateTotal(itemSubtotal) {
   let total = 0;
-  for (let i = 0; i < itemSubtotal.length; i++) {
-    total += itemSubtotal[i].subtotal;
-  }
+  itemSubtotal.map(function (item) {
+    total += item.subtotal;
+  });
   return total;
 }
 
 function calculateSavedSubtotal(itemsList) {
   let itemDiscountSubtotal = [];
   let discountSubtotal = 0;
-  for (let i = 0; i < itemsList.length; i++) {
-    if (itemsList[i].type === '指定菜品半价') {
-      discountSubtotal = itemsList[i].amount * parseFloat(itemsList[i].price / 2);
+  itemsList.map(function (item) {
+    if (item.type === '指定菜品半价'){
+      discountSubtotal = item.price * (item.amount/2);
     }
     else {
-      discountSubtotal = itemsList[i].amount * itemsList[i].price;
+      discountSubtotal = item.price * item.amount;
     }
-    itemDiscountSubtotal.push(Object.assign({}, itemsList[i], {discountSubtotal: discountSubtotal}));
-  }
+    itemDiscountSubtotal.push(Object.assign({},item,{discountSubtotal:discountSubtotal}));
+  });
   return itemDiscountSubtotal;
 }
 
 function calculateSavedTotal(itemDiscountSubtotal, total) {
   let discountTotal = 0;
   let minTotal = total;
-  for (let i = 0; i < itemDiscountSubtotal.length; i++) {
-    discountTotal += itemDiscountSubtotal[i].discountSubtotal;
-  }
+  itemDiscountSubtotal.map(function (item) {
+    discountTotal += item.discountSubtotal;
+  })
   if (total > 30) {
     if ((total - 6) > discountTotal) {
       minTotal = discountTotal;
@@ -98,10 +95,10 @@ function calculateSavedTotal(itemDiscountSubtotal, total) {
 
 function print(itemSubtotal, discountTotal, total) {
   let receipt = "============= 订餐明细 =============\n";
-  for (let i = 0; i < itemSubtotal.length; i++) {
-    receipt += itemSubtotal[i].name + " x " + itemSubtotal[i].amount + " = " + itemSubtotal[i].subtotal
+  itemSubtotal.map(function (item) {
+    receipt += item.name + " x " + item.amount + " = " + item.subtotal
       + "元\n";
-  }
+  });
   receipt += '-----------------------------------';
   if (total > 30) {
     receipt += '\n';
