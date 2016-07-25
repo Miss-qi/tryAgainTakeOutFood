@@ -54,11 +54,9 @@ function calculateSubtotal(itemsList) {
 }
 
 function calculateTotal(itemSubtotal) {
-  let total = 0;
-  itemSubtotal.map(function (item) {
-    total += item.subtotal;
-  });
-  return total;
+  return itemSubtotal.reduce(function (cur,newVal) {
+    return cur + newVal.subtotal;
+  },0);
 }
 
 function calculateSavedSubtotal(itemsList) {
@@ -77,11 +75,10 @@ function calculateSavedSubtotal(itemsList) {
 }
 
 function calculateSavedTotal(itemDiscountSubtotal, total) {
-  let discountTotal = 0;
   let minTotal = total;
-  itemDiscountSubtotal.map(function (item) {
-    discountTotal += item.discountSubtotal;
-  })
+  let discountTotal = itemDiscountSubtotal.reduce(function (cur,newVal) {
+    return cur + newVal.discountSubtotal;
+  },0);
   if (total > 30) {
     if ((total - 6) > discountTotal) {
       minTotal = discountTotal;

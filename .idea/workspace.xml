@@ -48,8 +48,8 @@
       <file leaf-file-name="best-charge.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/best-charge.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-387">
-              <caret line="100" column="5" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+            <state relative-caret-position="1209">
+              <caret line="100" column="20" selection-start-line="100" selection-start-column="20" selection-end-line="100" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -249,12 +249,12 @@
       <workItem from="1469417372320" duration="50000" />
       <workItem from="1469420433476" duration="6000" />
       <workItem from="1469436209706" duration="539000" />
-      <workItem from="1469443056682" duration="5122000" />
+      <workItem from="1469443056682" duration="7194000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26392000" />
+    <option name="totallyTimeSpent" value="28464000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="61" y="24" width="1305" height="744" extended-state="6" />
@@ -514,14 +514,6 @@
     <entry file="file://$PROJECT_DIR$/public/index.css" />
     <entry file="file://$PROJECT_DIR$/public/index.html" />
     <entry file="file://$PROJECT_DIR$/public/index.js" />
-    <entry file="file://$PROJECT_DIR$/run-specs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/items.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -546,10 +538,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/run-specs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/best-charge.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-387">
-          <caret line="100" column="5" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+        <state relative-caret-position="1209">
+          <caret line="100" column="20" selection-start-line="100" selection-start-column="20" selection-end-line="100" selection-end-column="20" />
           <folding />
         </state>
       </provider>
